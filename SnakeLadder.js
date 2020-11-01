@@ -12,8 +12,12 @@ var gameOption =  0;
 function getPosition(position,diceValue,gameOption){
     switch(gameOption){
         case LADDER:
-            position = position + diceValue;
-            return position;
+            if(position+diceValue <= MAX_POSITION){
+                position = position+diceValue;
+                return position;
+            }
+            else
+                return position;
         case SNAKE:
             if(position - diceValue < 0){
                 position = 0;
@@ -38,7 +42,4 @@ function game(){
     }
 }
 game()
-console.log(diceValue);
-console.log(gameOption);
-console.log(position);
 console.log(`Current position of player is: ${position}`)
